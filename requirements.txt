@@ -1,5 +1,6 @@
 autopep8==1.5.5
 glfw==2.0.0
+graphics.py==5.0.1.post1
 multipledispatch==0.6.0
 numpy==1.20.1
 Pillow==8.1.0

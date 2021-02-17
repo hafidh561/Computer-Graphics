@@ -1,5 +1,5 @@
 # Computer-Graphics
-Sample set of coding about Computer Graphics with PyOpenGL.  
+Sample set of coding about Computer Graphics.
 
 
 #### License
