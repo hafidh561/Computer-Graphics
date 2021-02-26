@@ -2,7 +2,7 @@ from Polygon import Polygon
 
 
 def main():
-    vertices1 = [(2, 1), (3, 5), (6, 6), (3, 8), (0, 4), (2, 1)]
+    vertices1 = [(2, 1), (3, 6), (5, 4), (8, 8), (10, 4), (12, 2), (2, 1)]
     example_1 = Polygon(vertices1)
     example_1.run_scan_line()
 
