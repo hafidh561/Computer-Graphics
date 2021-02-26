@@ -125,7 +125,6 @@ class Polygon:
         # Choose AET and Change Value Variable
         y_min = y_always_min
         y_max = y_always_max
-        aet = None
         get = get_new.copy()
         aet = [get[y_min][1], get[y_min][0]]
         left = aet[0][1]
@@ -139,15 +138,20 @@ class Polygon:
             # Change AET With New GET and Draw Pixel
             if y == aet[0][0] and y == aet[1][0]:
                 break
-                # self.draw_pixel()
             elif y == aet[0][0]:
                 if len(get[y]) > 1:
                     left_temp = get[y][1][1]
                     right_temp = get[y][2][1]
-                    for i in range(y, get[y][1][0] + 1):
-                        self.draw_pixel(left_temp, right_temp, i, fillcol)
-                        left_temp = left_temp + get[y][1][2]
-                        right_temp = right_temp + get[y][2][2]
+                    reset = False
+                    for i in range(1, len(get[y]), 2):
+                        if reset:
+                            left_temp = get[y][i][1]
+                            right_temp = get[y][i + 1][1]
+                        for j in range(y, get[y][i][0] + 1):
+                            self.draw_pixel(left_temp, right_temp, j, fillcol)
+                            left_temp = left_temp + get[y][i][2]
+                            right_temp = right_temp + get[y][i + 1][2]
+                        reset = True
                 aet[0] = get[y][0]
                 if aet[0][1] > right + aet[1][2]:
                     left = right + aet[1][2]
@@ -162,10 +166,16 @@ class Polygon:
                 if len(get[y]) > 1:
                     left_temp = get[y][1][1]
                     right_temp = get[y][2][1]
-                    for i in range(y, get[y][1][0] + 1):
-                        self.draw_pixel(left_temp, right_temp, i, fillcol)
-                        left_temp = left_temp + get[y][1][2]
-                        right_temp = right_temp + get[y][2][2]
+                    reset = False
+                    for i in range(1, len(get[y]), 2):
+                        if reset:
+                            left_temp = get[y][i][1]
+                            right_temp = get[y][i + 1][1]
+                        for j in range(y, get[y][i][0] + 1):
+                            self.draw_pixel(left_temp, right_temp, j, fillcol)
+                            left_temp = left_temp + get[y][i][2]
+                            right_temp = right_temp + get[y][i + 1][2]
+                        reset = True
                 aet[1] = get[y][0]
                 if left + aet[0][2] > aet[1][1]:
                     left = aet[1][1]
